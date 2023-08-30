@@ -535,7 +535,7 @@
 
   <!-- Arm-Hand Fixed Joint -->
   <joint name="ur5_hand_joint" type="fixed">
-    <parent link="tool0"/>
+    <parent link="flange"/>
     <child link="rg2_hand"/>
     <origin xyz="0 0 0" rpy="0 0 0"/>
     <limit lower="0" upper="0" effort="0" velocity="0"/>
@@ -545,13 +545,11 @@
   <!-- Hand Links -->
   <link name="rg2_hand">
     <visual name="rg2_hand_visual">
-    <origin xyz="0 0 0" rpy="0 -1.5707963267948966 -1.5707963267948966"/>
       <geometry>
         <mesh filename="package://urdf/meshes/ur5_rg2/meshes/visual/rg2/hand.dae"/>
       </geometry>
     </visual>
     <collision name="rg2_hand_collision">
-    <origin xyz="0 0 0" rpy="0 -1.5707963267948966 -1.5707963267948966"/>
       <geometry>
         <mesh filename="package://urdf/meshes/ur5_rg2/meshes/collision/rg2/hand.stl"/>
       </geometry>
@@ -560,13 +558,11 @@
 
   <link name="rg2_leftfinger">
     <visual>
-    <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
         <mesh filename="package://urdf/meshes/ur5_rg2/meshes/visual/rg2/finger.dae" />
       </geometry>
     </visual>
     <collision>
-    <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
         <mesh filename="package://urdf/meshes/ur5_rg2/meshes/collision/rg2/finger.stl" />
       </geometry>
@@ -593,7 +589,7 @@
   <joint name="rg2_finger_joint1" type="revolute">
     <parent link="rg2_hand"/>
     <child link="rg2_leftfinger"/>
-    <origin rpy="0 -1.5707963267948966 -1.5707963267948966" xyz="0.017 0 0.108"/>
+    <origin rpy="0 0 0" xyz="0.105 0.017 0"/>
     <axis xyz="0 0 1" />
     <limit effort="10.6" lower="0.0" upper="1.18" velocity="1.57" />
   </joint>
@@ -601,7 +597,7 @@
   <joint name="rg2_finger_joint2" type="revolute">
     <parent link="rg2_hand" />
     <child link="rg2_rightfinger" />
-    <origin rpy="0 -1.5707963267948966 -1.5707963267948966" xyz="-0.017 0 0.108"/>
+    <origin rpy="0 0 0" xyz="0.105 -0.017 0"/>
     <axis xyz="0 0 -1" />
     <limit effort="10.6" lower="0.0" upper="1.18" velocity="1.57" />
     <mimic joint="panda_finger_joint1" />
@@ -610,7 +606,7 @@
     <joint name="rg2_grip_vis_joint" type="fixed">
     <parent link="rg2_hand"/>
     <child link="rg2_grip_site"/>
-    <origin rpy="0 0 0" xyz="0 0 0.208"/>
+    <origin rpy="-1.5707963267948966 -3.141592653589793 -1.5707963267948966" xyz="0.2 0 0"/>
   </joint>
   
   <!-- If you want to grip something  rg2_grip_site will be the end-effector of gripper -->
@@ -626,7 +622,7 @@
  <joint name="rg2_leftfinger_tip_joint" type="fixed">
     <parent link="rg2_leftfinger"/>
     <child link="rg2_leftfinger_tip"/>
-    <origin rpy="0 0 0" xyz="0.095-0.0145 0.0 "/>
+    <origin rpy="0 0 0" xyz="0.095 -0.0145 0.0"/>
   </joint>
   
   <link name="rg2_leftfinger_tip">
